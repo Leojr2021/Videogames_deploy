@@ -5,6 +5,7 @@ import Videogames from "../../components/Videogames/Videogames";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { Filter } from "../Filter/Filter";
 import "./Home.css";
+import NotFound from "../../components/NotFound/NotFound";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -42,12 +43,19 @@ export default function Home() {
   return (
     <div className="home">
       <Filter paginate={paginate} />
+      
+      {allVideogames[0]===404 ? <NotFound /> 
+      :
+      <>
       <Videogames videogames={currentPageGames} />
       <Pagination
         videogamesPerPage={videogamesPerPage}
         totalVideogames={allVideogames.length}
         paginate={paginate}
       />
+      </>
+      }
+      
     </div>
   );
 };

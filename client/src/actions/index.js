@@ -1,14 +1,6 @@
 import axios from "axios"
 
-// export function getVideogames() {
-//   return function (dispatch) {
-//     return fetch(`http://localhost:3001/videogames`)
-//       .then(response => response.json())
-//       .then(json => {
-//         dispatch({ type: "GET_VIDEOGAMES", payload: json });
-//       });
-//   };
-// }
+
 
 export function getVideogames() {
   return async (dispatch) => {
@@ -27,19 +19,6 @@ export function getVideogames() {
 
 
 
-
-
-// export function searchVideogames(name) {
-//   return (dispatch) =>
-//     fetch(`http://localhost:3001/videogames?name=${name}`)
-//       .then((resp) => resp.json())
-//       .then((json) => {
-//         dispatch({
-//           type: "SEARCH_VIDEOGAMES",
-//           payload: json,
-//         });
-//       });
-// }
 
 
 
@@ -63,20 +42,6 @@ export function searchVideogames(name) {
 
 
 
-// export function getVideogameById(id) {
-//   return (dispatch) =>
-//     fetch(`http://localhost:3001/videogame/${id}`)
-//       .then((resp) => resp.json())
-//       .then((json) => {
-//         dispatch({
-//           type: "GET_VIDEOGAME_BY_ID",
-//           payload: json,
-//         });
-//       });
-// }
-
-
-
 
 export function getVideogameById(id) {
   return async (dispatch) => {
@@ -93,23 +58,6 @@ export function getVideogameById(id) {
   };
 }
 
-
-
-
-
-
-
-// export function getGenres() {
-//   return (dispatch) =>
-//     fetch(`http://localhost:3001/genres`)
-//       .then((resp) => resp.json())
-//       .then((json) => {
-//         dispatch({
-//           type: "GET_GENRES",
-//           payload: json,
-//         });
-//       });
-// }
 
 
 
@@ -131,29 +79,6 @@ export function getGenres() {
 
 
 
-
-
-
-
-
-// export function createVideogame(obj) {
-//   return (dispatch) =>
-//     fetch("http://localhost:3001/videogame", {
-//       method: "POST",
-//       headers: {
-//         Accept: "application/json",
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(obj),
-//     })
-//       .then((resp) => resp.json())
-//       .then((json) => {
-//         dispatch({
-//           type: "CREATE_VIDEOGAME",
-//           payload: json,
-//         });
-//       });
-// }
 
 export const createVideogame = (data) => {
   return async function (dispatch) {
@@ -186,38 +111,11 @@ export const filterByGenre = (genres) => (dispatch, getState) => {
       (game.genres).includes(genres)
     )
     console.log(filteredGames);
-    if (filteredGames.length === 0) filteredGames = ["No hay nada que mostrar"]
+    if (filteredGames.length === 0) filteredGames = [404]
   };
   
   
-  
-  
-  // let filteredGames = [];
-
-  // if (genres === "All") {
-  //   filteredGames = getState().videogames;
-  // } else {
-  //   console.log(genres);
-  //    filteredGames = getState().videogames.filter((game) =>
-  //     (game.genres).includes(genres)
-  //   )
-  //   console.log(filteredGames);
-  //   if (filteredGames.length === 0) filteredGames = ["No hay nada que mostrar"]
-  // };
-
-
-  
-  
-  // let filteredGames = [];
-
-  // if (genres === "All") {
-  //   filteredGames = getState().videogames;
-  // } else {
-  //   filteredGames = getState().videogames.filter((game) =>
-  //     (game.genres).includes(genres)
-  //   )
-  //   if (filteredGames.length === 0) filteredGames = ["No hay nada que mostrar"]
-  // };
+ 
   dispatch({
     type: "FILTER_BY_GENRE",
     payload: {
@@ -232,7 +130,7 @@ export const orderAsc = (type) => (dispatch, getState) => {
   
   let filtered = getState().filteredVideogames;
   if (filtered.length===0) filtered = getState().videogames; 
-  if ( getState().searchVideogameByName.length>0) filtered = getState().searchVideogameByName 
+  if ( getState().searchVideogameByName.length>0 && getState().filteredVideogames.length===0) filtered = getState().searchVideogameByName 
   console.log(filtered.length);
   let videogamesOrder = []
 
@@ -260,7 +158,7 @@ export const orderAsc = (type) => (dispatch, getState) => {
 export const orderDesc = (type) => (dispatch, getState) => {
   let filtered = getState().filteredVideogames;
   if (filtered.length===0) filtered = getState().videogames 
-  if ( getState().searchVideogameByName.length>0) filtered = getState().searchVideogameByName 
+  if ( getState().searchVideogameByName.length>0 && getState().filteredVideogames.length===0) filtered = getState().searchVideogameByName 
   console.log(filtered.length);
   let videogamesOrder = []
     

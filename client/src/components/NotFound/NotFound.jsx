@@ -13,9 +13,14 @@ export default function NotFound ({image}) {
             {image === "noimage" ?
             <img className = "img" src={notfound_image} alt="Link caido"/>
             : 
-            <div>
-                <h1>No hay nada para mostrar 😓 </h1>
+            <div className="container_Notfound">
+                <div className="grid_container">
+                <div className="text_grid">
+                <h1>oops... </h1>
+                <h1>nothing to see here 😓 </h1>
+                </div>
                 <img className="notfound" src={gif_error} alt="Link caido"/>
+                </div>
             </div>
             }
         </div>

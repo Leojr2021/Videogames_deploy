@@ -56,7 +56,30 @@ export default function Search() {
 
 
      <div className="search">
-        {searchVideogame[0] === 404 ?
+        
+        <Filter paginate={paginate} />
+      
+      {search_filter[0]===404 ? <NotFound /> 
+      :
+      <>
+      <Videogames videogames={currentPageGames} />
+      <Pagination
+        videogamesPerPage={videogamesPerPage}
+        totalVideogames={search_filter.length}
+        paginate={paginate}
+      />
+      </>
+      }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        {/* {searchVideogame[0] === 404 ?
         <>
           <NotFound />
           
@@ -72,7 +95,7 @@ export default function Search() {
         />
     
         </>
-        }
+        } */}
     </div>
 
 

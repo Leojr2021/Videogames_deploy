@@ -1,6 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
 
-/* 
-.notfound_images{
-    font-family: 'RocknRoll One';
-} */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+
+.container_Notfound{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 95vh;
+font-family: 'Poppins';
+background-color: blanchedalmond;
+}
+
+.grid_container{
+    display: grid;
+    grid-template-rows: 30% 1fr;
+}
+.text_grid{
+margin: auto;
+text-align: center;
+
+}
