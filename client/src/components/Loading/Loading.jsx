@@ -6,7 +6,7 @@ export default function loading () {
     return (
         <div className="loading_container">
             
-            <h1>Cargando...  </h1>
+            <h1>Loading...  </h1>
             <img className="loading" src={loading_gif2} alt="Link caido"/>
         </div>
     );
