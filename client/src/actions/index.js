@@ -188,10 +188,13 @@ export const orderByCreator = (source) => (dispatch, getState) => {
   let filtered = getState().videogames;
   
   if ( getState().searchVideogameByName.length>0) filtered = getState().searchVideogameByName 
+ 
   
-  const videogames = filtered.filter(function (G) {
+  let videogames = filtered.filter(function (G) {
       return G.source === source
     });
+
+    if (videogames.length === 0) videogames = [404]
   dispatch({
     type: "ORDER_BY_CREATOR",
     payload: {
