@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;1,500;1,700&display=swap');
+
+.pagination {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: black;
+    /* margin-top: 20px; */
+    
+}
+
+.item button{
+    background: none;
+    border: 1px solid whitesmoke;
+    color: white;
+    font-size: 1.3rem;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 5px;
+
+    
+}
+
+.item button:hover {
+    cursor: pointer;
+    font-size: 1.5rem;
+    background-color: whitesmoke;
+    color: black;
+    /* text-shadow: 0 0 5px #fff, */
+}

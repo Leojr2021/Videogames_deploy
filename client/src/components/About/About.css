@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+.about_page{
+    font-family: 'Poppins', sans-serif;
+   
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: blanchedalmond;
+    height: 100vh;
+   
+    
+}
+.about_photo_text img{
+    border-radius: 0;
+   width: 40px;
+
+}
+.about_page h1{
+    font-size: 4rem;
+}
+.about_page h2{
+    font-size: 2rem;
+    margin-top: 50px;
+}
+
+p{
+    font-size: 1rem;
+}
+
+.logos{
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+
+
+
+.about_photo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.about_photo_text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+/* .about_photo img{
+    border-radius: 30px;
+} */
+
+.profilePhoto img {
+    border-radius: 20px;
+}
+

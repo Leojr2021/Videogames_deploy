@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.create_container_out{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+ .create_container{
+    max-width: 65%;
+    /* margin: auto; */
+    border-color: black;
+    border-style: solid;
+    margin-top: -100px;
+    font-family: 'Poppins';
+    background-color: blanchedalmond;
+    text-align: center;
+ }
+
+
+ .top_side{
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+ }
+
+.checkbox_genres{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 75%;
+    margin: auto;
+}
+
+.checkbox_genres_left{
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.checkbox_genres_left_inside{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.checkbox_genres_right_inside{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.checkbox_platforms{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 75%;
+    margin: auto;
+}
+
+
+.checkbox_platforms_left_inside{
+    display: flex;
+    justify-content: flex-start;
+}
+.checkbox_platforms_right_inside{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+
+.checkboxs_right h2{
+    margin: 0;
+}
+
+
+.left_side{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    margin-left: 10%;
+
+}
+
+.left_side_margin{
+    margin: 10px 0 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button_create{
+    width: 30%;
+    font-family: 'Poppins';
+    font-weight: bolder;
+    font-size: 1.5rem;
+    margin: 20px;
+}
+
+.left_side_margin input {
+    width: 60%;
+    text-align: right;
+}
+
+textarea{
+    width: 100%;
+    height: 180px;
+    resize: none;
+}
