@@ -116,7 +116,7 @@ export function getVideogameById(id) {
 export function getGenres() {
   return async (dispatch) => {
     try{
-      const response = await axios.get(`genres`);
+      const response = await axios.get(`/genres`);
       if(response?.data){
         dispatch({ type: "GET_GENRES", payload: response.data });
       }
