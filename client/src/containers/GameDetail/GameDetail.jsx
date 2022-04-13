@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { Link,useHistory } from "react-router-dom";
+import { Link,useHistory} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getVideogameById, resetAll } from "../../actions/index";
+// import { deleteVideogame } from "../../actions/index";
 import NotFound from "../../components/NotFound/NotFound";
 import "./GameDetail.css";
 import Loading from "../../components/Loading/Loading";
@@ -10,6 +11,7 @@ function GameDetail({ id }) {
   const dispatch = useDispatch();
   const videogame = useSelector((store) => store.searchVideogameById);
   const history = useHistory();
+  // const { idVideogame } = useParams();
 
   useEffect(() => {
     dispatch(resetAll());
@@ -20,6 +22,11 @@ function GameDetail({ id }) {
   const goBack = () => {
     history.goBack();
   };
+
+  // const handleDelete = () => {
+  //   dispatch(deleteVideogame(id));
+  //   // navigate("/home");
+  // };
 
 
   return (
@@ -79,6 +86,13 @@ function GameDetail({ id }) {
               </button>
             </Link>
           </div>
+
+          {/* {typeof videogame.id === "string" && (
+          <button onClick={handleDelete} className="delete_button">
+            DELETE POKEMON
+          </button>
+        )}  */}
+
         </div>
       )}
     </>

@@ -52,4 +52,27 @@ router.get('/:id', async function (req, res) {
     }
 })
 
+
+
+
+/////////////////////////////////delete
+
+
+router.delete('/:id', async function (req, res) {
+    const { id } = req.params;
+    try {
+     
+      const videogameToDelete = await Videogame.findByPk(id);
+      if (videogameToDelete) {
+        await videogameToDelete.destroy();
+        return res.send("Videogame deleted!");
+      }
+      res.status(404).send("Videogame not found.");
+    } catch (error) {
+      res.status(400).send(error);
+    }
+  });
+
+
+
 module.exports = router;

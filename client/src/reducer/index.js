@@ -8,6 +8,8 @@ const initialState = {
   filteredVideogames: [],
   orderBy: "Select",
   filterBy: "All",
+  genderState: "All",
+  currentPage:null,
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -58,7 +60,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         filteredVideogames: action.payload.videogameGenre,
-        filterBy: action.payload.genre,
+        filterBy: action.payload.genres,
       };
 
     case "ORDER_ASC_NAME":
@@ -78,7 +80,30 @@ export default function rootReducer(state = initialState, action) {
       filterBy: action.payload.source,
     };
 
+    case "DELETE_VIDEOGAME":
+      return {
+        ...state,
+      };
+
+    case "GENDER_STATE":
+      return{
+        ...state,
+        genderState: action.payload
+
+      }
+      case "CURRENT_PAGE":
+        return{
+          ...state,
+          currentPage: action.payload
+  
+        }
+
+
+      
+
     default:
       return state;
+
+
   }
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { useHistory } from "react-router";
 import { createVideogame } from "../../actions/index";
+// import { useNavigate } from "react-router-dom";
 // import { Verification } from "../../components/Verification/Verification";
 import "./Create.css";
 
@@ -10,21 +11,14 @@ export default function Create() {
     const genres = useSelector((store) => store.genres);
     const genres1 = genres.slice(0, 10)
     const genres2 = genres.slice(10, 20)
+
+    // const navigate = useNavigate();
     // const createVideogame =useSelector((store)=>store.createVideogame)
     // const history = useHistory();
 
     // const IDcreatedvideogame = createVideogame.id;
     
-    // const push = () => {
-    //     history.push("/videogames");
-    //     // history.push("/blog", { fromPopup: true });
-    //     history.push({
-    //       pathname: "/videogames",
-    //       search: {IDcreatedvideogame},
-    //     //   hash: "#react",
-    //     //   state: { fromPopup: true }
-    //     });
-    //   };
+
     
 
     const [game, setGame] = useState({
@@ -78,22 +72,23 @@ export default function Create() {
         genres: game.genres,
         platforms: game.platforms,
         };
+        console.log(obj.name.length);
 
         // Validaciones
-        if (!obj.name) {
+    
+        if(obj.name.length===1 ||!obj.name){
             alert("Name can't be empty")
             return
         }
+        
+         
         if (!obj.description) {
             alert("Description can't be empty")
             return
         }if (!obj.released) {
             alert("Date can't be empty")
             return
-        }// }if (obj.rating > 5 || obj.rating < 0) {
-        //     alert("Rating must be between 0 and 5.")
-        //     return
-        // }
+        }
         if(obj.genres.length===0){
             alert("Choose at least 01 Genres")
             return
@@ -109,6 +104,7 @@ export default function Create() {
         dispatch(createVideogame(obj));
         e.target.reset();
         alert("Videogame created successfully!");
+        // navigate("/home");
         //  dispatch(getVideogames()) 
 
         setGame({
@@ -302,7 +298,7 @@ return (
         </form>
     </div>
 
-    {/* {verification && <Verification />} */}
+   
     </div>
     
     </>

@@ -1,9 +1,11 @@
 import React from "react";
+// import { useSelector } from "react-redux";
 import "./Pagination.css";
 
 export const Pagination = ({ videogamesPerPage, totalVideogames, paginate }) => {
   const pageNumbers = [];
   const numOfPages = Math.ceil(totalVideogames / videogamesPerPage)
+  // const currentPageNum = useSelector((store) => store.currentPage);
 
   for (let i = 1; i <= numOfPages ; i++) {
     pageNumbers.push(i);
@@ -18,6 +20,9 @@ export const Pagination = ({ videogamesPerPage, totalVideogames, paginate }) => 
             </button>
           </div>
         ))}
+        {/* <button onClick={(e) => paginate(e, currentPageNum+1)}>
+              Next
+            </button> */}
     </nav>
   );
 };

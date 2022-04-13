@@ -2,10 +2,14 @@ import axios from "axios"
 
 
 
+
+
+
+
 export function getVideogames() {
   return async (dispatch) => {
     try{
-      const response = await axios.get(`/videogames`);
+      const response =  await axios.get(`/videogames`);
       if(response?.data){
         dispatch({ type: "GET_VIDEOGAMES", payload: response.data });
       }
@@ -98,6 +102,15 @@ export const resetAll = () => {
   };
 };
 
+export const currentPage = (page) => {
+  return (dispatch) => {
+    dispatch({
+      type: "CURRENT_PAGE",
+      payload : page,
+    });
+  };
+};
+
 
 export const filterByGenre = (genres) => (dispatch, getState) => {
   
@@ -183,18 +196,60 @@ export const orderDesc = (type) => (dispatch, getState) => {
 }
 
 
+export const mayorcuatro = () => (dispatch, getState) => {
+  // let filtered = getState().filteredVideogames;
+  let filtered = getState().videogames 
+  // if ( getState().searchVideogameByName.length>0 && getState().filteredVideogames.length===0) filtered = getState().searchVideogameByName 
+  console.log(filtered.length);
+  // let videogamesOrder = []
+
+  const mayorcuatro =filtered.filter(e=>e.rating>4)
+    
+    // if (type === "desc_name") {
+    //   videogamesOrder = filtered.sort((a, b) => {
+    //     if (a.name < b.name) return 1;
+    //     if (a.name > b.name) return -1;
+    //     return 0;
+    //   });
+    // } else if (type === "desc_rating") {
+    //   videogamesOrder = filtered.sort(
+    //     (a, b) => b.rating - a.rating
+    //   );
+    // }
+    dispatch({
+      type: "MAYOR_CUATRO_RATING",
+      payload: mayorcuatro,
+        
+      
+    });
+}
+
+
+
+
+
+
+
+
 export const orderByCreator = (source) => (dispatch, getState) => {
   
-  let filtered = getState().videogames;
+  let filtered =[]
+
+  if(getState().genderState === "All") filtered = getState().videogames
+  
   
   if ( getState().searchVideogameByName.length>0) filtered = getState().searchVideogameByName 
- 
+  // if ( getState().filteredVideogames[0] === 404) filtered = getState().videogames 
+  if ( getState().filteredVideogames.length>0 ) filtered = getState().filteredVideogames 
   
   let videogames = filtered.filter(function (G) {
       return G.source === source
     });
 
     if (videogames.length === 0) videogames = [404]
+
+
+
   dispatch({
     type: "ORDER_BY_CREATOR",
     payload: {
@@ -203,3 +258,30 @@ export const orderByCreator = (source) => (dispatch, getState) => {
     },
   });
 };
+
+
+
+
+export const genderState = (genres) =>{
+  return(dispatch)=>{
+    dispatch({
+      type:"GENDER_STATE",
+      payload : genres
+    })
+  }
+}
+
+
+
+
+
+// *****************DELETE*******************
+
+// export const deleteVideogame = (id) => {
+//   return async function (dispatch) {
+//     await axios.delete(`/videogames/${id}`);
+//     return dispatch({
+//       type: "DELETE_VIDEOGAME",
+//     });
+//   };
+// };

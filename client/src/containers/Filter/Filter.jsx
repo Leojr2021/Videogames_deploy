@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getGenres, filterByGenre, orderByCreator, orderAsc, orderDesc } from "../../actions/index";
+import { getGenres, filterByGenre, orderByCreator, orderAsc, orderDesc, genderState } from "../../actions/index";
 import "./Filter.css";
 
 export function Filter({paginate}) {
@@ -15,6 +15,7 @@ export function Filter({paginate}) {
   // Filtrado por genre
   const handleFilter = (e) => {
     dispatch(filterByGenre(e.target.value))
+    dispatch(genderState(e.target.value))
     paginate(e, 1);
   };
 
@@ -23,8 +24,10 @@ export function Filter({paginate}) {
   const handleOrder = (e) => {
     if (e.target.value === "asc_name" || e.target.value === "asc_rating") {
       dispatch(orderAsc(e.target.value));
+      paginate(e, 1);
     } else if (e.target.value === "desc_name" || e.target.value === "desc_rating") {
       dispatch(orderDesc(e.target.value));
+      paginate(e, 1);
     } else {
       dispatch(filterByGenre(e.target.value));
     }
@@ -42,6 +45,7 @@ export function Filter({paginate}) {
     
   };
 
+
   return (
     <div className="filter_container">
 
@@ -56,16 +60,7 @@ export function Filter({paginate}) {
           ))}
         </select>
       </div>
-      {/* <div>
-        <div>Order</div>
-        <select onChange={(e) => handleOrder(e)}>
-          <option  key="All" value="All" default>All</option>
-          <option key="asc_name" value="asc_name">Alphabetically (A-Z)</option>
-          <option key="desc_name" value="desc_name">Alphabetically (Z-A)</option>
-          <option key="asc_rating" value="asc_rating">Rating (Lower-Higher)</option>
-          <option key="desc_rating" value="desc_rating">Rating (Higher-Lower)</option>
-        </select>
-      </div> */}
+   
       <div>
         <div>Order</div>
         <select onChange={(e) => handleOrder(e)}>

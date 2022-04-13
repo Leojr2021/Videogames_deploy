@@ -21,6 +21,10 @@ server.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
   next();
 });
+// server.get('/cors', (req, res) => {
+//   res.set('Access-Control-Allow-Origin', '*');
+//   res.send({ "msg": "This has CORS enabled 🎈" })
+//   })
 
 server.use('/', routes);
 
