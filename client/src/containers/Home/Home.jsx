@@ -16,8 +16,8 @@ export default function Home() {
   const videogames = useSelector((state) => state.videogames);
 
   useEffect(() => {
-    dispatch(resetAll());
-    dispatch(getVideogames());
+    videogames.length===0 && dispatch(resetAll());
+    videogames.length===0 && dispatch(getVideogames());
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Filtrado y Ordenado
@@ -32,11 +32,11 @@ export default function Home() {
     setPage(num);
   }
 
-  const handle4 = (e) => {
-    dispatch(mayorcuatro())
-    // dispatch(genderState(e.target.value))
-    // paginate(e, 1);
-  };
+  // const handle4 = (e) => {
+  //   dispatch(mayorcuatro())
+  //   // dispatch(genderState(e.target.value))
+  //   // paginate(e, 1);
+  // };
 
 
   

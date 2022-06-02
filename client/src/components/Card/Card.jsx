@@ -3,6 +3,10 @@ import {Link} from 'react-router-dom';
 import NotFound from '../../components/NotFound/NotFound';
 import './Card.css';
 import goldenMedal from '../../assets/star.png'
+import Image from '../ImageComponent/Image';
+// import { LazyLoadImage } from 'react-lazy-load-image-component';
+// import 'react-lazy-load-image-component/src/effects/blur.css';
+// import placehoder from "../../assets/placeholder.png";
 
 function Card({data}) {
 	return (
@@ -10,10 +14,12 @@ function Card({data}) {
 			<div className='card_content'>
 
 
-			<Link to={`/videogames/${data.id}`}>
+			<Link to={`/home/${data.id}`}>
 				{data.image === null || !data.image ? (
 					<NotFound image={'noimage'} />
 				) : (
+					
+					// <Image src={data.image} alt={data.name}/>
 					<img className='img' src={data.image} alt={data.name} />
 				)}
 			</Link>

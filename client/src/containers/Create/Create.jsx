@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Swal from 'sweetalert2'
 // import { useHistory } from "react-router";
 import { createVideogame } from "../../actions/index";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { Verification } from "../../components/Verification/Verification";
 import "./Create.css";
 
@@ -12,7 +13,7 @@ export default function Create() {
     const genres1 = genres.slice(0, 10)
     const genres2 = genres.slice(10, 20)
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     // const createVideogame =useSelector((store)=>store.createVideogame)
     // const history = useHistory();
 
@@ -77,24 +78,54 @@ export default function Create() {
         // Validaciones
     
         if(obj.name.length===1 ||!obj.name){
-            alert("Name can't be empty")
+            // alert("Name can't be empty")
+            Swal.fire({
+                title: 'Error!',
+                text: "Name can't be empty",
+                icon: 'error',
+                confirmButtonText: 'Close'
+              })
             return
         }
         
          
         if (!obj.description) {
-            alert("Description can't be empty")
+            // alert("Description can't be empty")
+            Swal.fire({
+                title: 'Error!',
+                text: "Description can't be empty",
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
             return
         }if (!obj.released) {
-            alert("Date can't be empty")
+            // alert("Date can't be empty")
+            Swal.fire({
+                title: 'Error!',
+                text: "Date can't be empty",
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
             return
         }
         if(obj.genres.length===0){
-            alert("Choose at least 01 Genres")
+            // alert("Choose at least 01 Genres")
+            Swal.fire({
+                title: 'Error!',
+                text: "Choose at least 01 Genres",
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
             return
         }
         if(obj.platforms.length===0){
-            alert("Choose at least 01 latforms")
+            // alert("Choose at least 01 latforms")
+            Swal.fire({
+                title: 'Error!',
+                text: "Choose at least 01 latforms",
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
             return
         }
 
@@ -103,8 +134,14 @@ export default function Create() {
 
         dispatch(createVideogame(obj));
         e.target.reset();
-        alert("Videogame created successfully!");
-        // navigate("/home");
+        // alert("Videogame created successfully!");
+        Swal.fire({
+            title: 'Success!',
+            text: "Videogame created successfully!",
+            icon: 'success',
+            // confirmButtonText: 'Cool'
+          })
+        navigate("/home");
         //  dispatch(getVideogames()) 
 
         setGame({

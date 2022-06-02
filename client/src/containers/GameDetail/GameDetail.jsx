@@ -1,26 +1,32 @@
 import React, { useEffect } from "react";
-import { Link,useHistory} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideogameById, resetAll } from "../../actions/index";
+import { getVideogameById, resetAll, resetAllDetails } from "../../actions/index";
 // import { deleteVideogame } from "../../actions/index";
 import NotFound from "../../components/NotFound/NotFound";
 import "./GameDetail.css";
 import Loading from "../../components/Loading/Loading";
+import { useParams } from "react-router-dom";
+import Image from "../../components/ImageComponent/Image";
 
-function GameDetail({ id }) {
+function GameDetail() {
   const dispatch = useDispatch();
   const videogame = useSelector((store) => store.searchVideogameById);
-  const history = useHistory();
+  const navigate = useNavigate();
+  const { id } = useParams();
+  console.log(id);
+  // const history = useHistory();
   // const { idVideogame } = useParams();
 
   useEffect(() => {
-    dispatch(resetAll());
+    // dispatch(resetAll());
+    dispatch(resetAllDetails());
     dispatch(getVideogameById(id));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 
   const goBack = () => {
-    history.goBack();
+    navigate(-1);
   };
 
   // const handleDelete = () => {
@@ -44,6 +50,7 @@ function GameDetail({ id }) {
                 src={videogame.image}
                 alt={videogame.name}
               />
+              // <Image src={videogame.image} alt={videogame.name}/>
             )}
           </div>
           <div className="detail_title">

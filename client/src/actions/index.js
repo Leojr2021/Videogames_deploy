@@ -86,7 +86,7 @@ export function getGenres() {
 
 export const createVideogame = (data) => {
   return async function (dispatch) {
-    await axios.post("http://localhost:3001/videogame", data);
+    await axios.post("/videogame", data);
     return dispatch({
       type: "CREATE_VIDEOGAME",
     });
@@ -98,6 +98,14 @@ export const resetAll = () => {
   return (dispatch) => {
     dispatch({
       type: "RESET",
+    });
+  };
+};
+
+export const resetAllDetails = () => {
+  return (dispatch) => {
+    dispatch({
+      type: "RESET_DETAIL",
     });
   };
 };
@@ -196,33 +204,33 @@ export const orderDesc = (type) => (dispatch, getState) => {
 }
 
 
-export const mayorcuatro = () => (dispatch, getState) => {
-  // let filtered = getState().filteredVideogames;
-  let filtered = getState().videogames 
-  // if ( getState().searchVideogameByName.length>0 && getState().filteredVideogames.length===0) filtered = getState().searchVideogameByName 
-  console.log(filtered.length);
-  // let videogamesOrder = []
+// export const mayorcuatro = () => (dispatch, getState) => {
+//   // let filtered = getState().filteredVideogames;
+//   let filtered = getState().videogames 
+//   // if ( getState().searchVideogameByName.length>0 && getState().filteredVideogames.length===0) filtered = getState().searchVideogameByName 
+//   console.log(filtered.length);
+//   // let videogamesOrder = []
 
-  const mayorcuatro =filtered.filter(e=>e.rating>4)
+//   const mayorcuatro =filtered.filter(e=>e.rating>4)
     
-    // if (type === "desc_name") {
-    //   videogamesOrder = filtered.sort((a, b) => {
-    //     if (a.name < b.name) return 1;
-    //     if (a.name > b.name) return -1;
-    //     return 0;
-    //   });
-    // } else if (type === "desc_rating") {
-    //   videogamesOrder = filtered.sort(
-    //     (a, b) => b.rating - a.rating
-    //   );
-    // }
-    dispatch({
-      type: "MAYOR_CUATRO_RATING",
-      payload: mayorcuatro,
+//     // if (type === "desc_name") {
+//     //   videogamesOrder = filtered.sort((a, b) => {
+//     //     if (a.name < b.name) return 1;
+//     //     if (a.name > b.name) return -1;
+//     //     return 0;
+//     //   });
+//     // } else if (type === "desc_rating") {
+//     //   videogamesOrder = filtered.sort(
+//     //     (a, b) => b.rating - a.rating
+//     //   );
+//     // }
+//     dispatch({
+//       type: "MAYOR_CUATRO_RATING",
+//       payload: mayorcuatro,
         
       
-    });
-}
+//     });
+// }
 
 
 

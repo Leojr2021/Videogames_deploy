@@ -8,7 +8,7 @@ export function Filter({paginate}) {
   const genres = useSelector((store) => store.genres);
 
   useEffect(() => {
-    dispatch(getGenres());
+    genres.length===0 && dispatch(getGenres());
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 

@@ -1,20 +1,21 @@
-import React from 'react';
-import { Route } from "react-router-dom";
-import LandingPage from "./components/LandingPage/LandingPage.jsx"
-import NavBar from "./components/Navbar/Navbar.jsx"
-import Home from "./containers/Home/Home.jsx"
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import LandingPage from "./components/LandingPage/LandingPage.jsx";
+import NavBar from "./components/Navbar/Navbar.jsx";
+import Home from "./containers/Home/Home.jsx";
 import Search from "./containers/Search/Search";
-import Create from "./containers/Create/Create.jsx"
-import About from "./components/About/About.jsx"
+import Create from "./containers/Create/Create.jsx";
+import About from "./components/About/About.jsx";
 import GameDetail from "./containers/GameDetail/GameDetail.jsx";
 import "./App.css";
+import Layout from "./components/Layout/Layout.jsx";
+import NotFound from "./components/NotFound/NotFound.jsx";
 
 
 function App() {
-
   return (
     <div className="App">
-      <React.Fragment>
+      {/* <React.Fragment>
         <Route exact path="/" component={LandingPage} />
 
         <Route path="/home" component={NavBar} />
@@ -38,7 +39,22 @@ function App() {
         <Route path="/about" component={NavBar} />
         <Route path="/about" component={About} />
         
-      </React.Fragment>
+      </React.Fragment> */}
+
+      <Routes>
+        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="home" element={<Layout />}>
+          <Route index element={<Home />}></Route>
+          <Route path="about" element={<About />}></Route>
+
+          <Route path="create" element={<Create />}></Route>
+
+          <Route path=":id" element={<GameDetail />} />
+          <Route path="search">
+            <Route path=":name" element={<Search />} />
+          </Route>
+        </Route>
+      </Routes>
     </div>
   );
 }

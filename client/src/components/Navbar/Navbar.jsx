@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css"
 import logo from '../../assets/control_videogame.png'
-
+import { CreateModal } from "../../containers/CreateModal/CreateModal";
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+// import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 function NavBar() {
     const [name, setName] = useState("");
 
@@ -27,12 +29,13 @@ function NavBar() {
             </div>
             
             <div className="create">
-                <Link to="/create">
+                <Link to="create">
                 <h3>Create</h3>
                 </Link>
+               {/* <CreateModal/> */}
             </div>
             <div className="about">
-                <Link to="/about">
+                <Link to="about">
                 <h3>About</h3>
                 </Link>
             </div>
@@ -46,7 +49,7 @@ function NavBar() {
                     placeholder="Enter a videogame"
                     type="text"
                     ></input>
-                     <NavLink to={`/results/${name}`}>
+                     <NavLink to={`search/${name}`}>
                         <button name="name" type="submit"> Go </button>
                     </NavLink>
                    

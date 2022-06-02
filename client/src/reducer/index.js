@@ -56,6 +56,15 @@ export default function rootReducer(state = initialState, action) {
         filterBy: "All",
       }
 
+      case "RESET_DETAIL":
+        return {
+          ...state,
+         
+          searchVideogameById: [],
+       
+          
+        }
+
     case "FILTER_BY_GENRE":
       return {
         ...state,
